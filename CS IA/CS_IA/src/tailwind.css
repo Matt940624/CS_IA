@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layers components {
+    .active input,
+    .active button {
+        border-color: #a3b8c9;
+        background-color: #93a5b3;
+        color: white;
+        transition: #93a5b3 .2s, color .2s, #a3b8c9 .2s;
+    }
+}
