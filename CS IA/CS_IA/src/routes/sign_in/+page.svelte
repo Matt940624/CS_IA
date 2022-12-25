@@ -37,7 +37,6 @@
 		password = '';
 	axios.defaults.headers.post['Content-Type'] =
 		'application/json;charset=utf-8';
-	axios.defaults.headers.post['Origin'] = 'http://localhost:5173/';
 	axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
 	$: submit = async () => {
