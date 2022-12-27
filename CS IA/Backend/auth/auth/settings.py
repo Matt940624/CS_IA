@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 # Application definition
 
 INSTALLED_APPS = [
+    'Product_Up',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,19 +41,21 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
-    'Product_Up'
 ]
 
+
 MIDDLEWARE = [
+    'Product_Up.middleware.CorsMiddleware',
+    # 'Product_Up.middleware.log_middleware',
+    # 'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    # 'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'auth.urls'
@@ -135,17 +138,22 @@ REST_FRAMEWORK = {
     'EXCEPTION_HANDLER': 'Product_Up.exceptions.status_code_handler'
 }
 
-AUTH_USER_MODEL = 'Product_Up.User'
+# AUTH_USER_MODEL = 'Product_Up.User'
 
-CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOW_ALL_ORIGINS = True
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost",
-    "http://127.0.0.1",
-]
 CORS_ALLOW_CREDIDENTIALS = True
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+]
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:5173'
+]
+
+
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')

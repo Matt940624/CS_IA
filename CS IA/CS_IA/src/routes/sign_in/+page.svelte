@@ -35,26 +35,26 @@
 
 	let email = '',
 		password = '';
-	axios.defaults.headers.post['Content-Type'] =
-		'application/json;charset=utf-8';
+	// axios.defaults.headers.post['Content-Type'] =
+	// 	'application/json;charset=utf-8';
 	axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
-	$: submit = async () => {
-		const response = await axios.post(
-			'http://localhost:8000/api/login/',
-			{
-				email,
-				password,
-			},
-			{ withCredentials: true }
-		);
-		if (response.status === 200) {
-			axios.defaults.headers.common[
-				'Authorization'
-			] = `Bearer ${response.data.token}`;
-			await goto('/timer');
-		}
-	};
+	async function submit(e: Event) {
+		e.preventDefault();
+		axios
+			.post('http://localhost:8000/api/login', { email, password })
+			.then(async (response) => {
+				if (response.status === 200) {
+					axios.defaults.headers.common[
+						'Authorization'
+					] = `Bearer ${response.data.token}`;
+					await goto('/timer');
+				}
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	}
 </script>
 
 <div class="grid grid-cols-5 gap-2">

@@ -21,6 +21,7 @@ class RegisterAPIView(APIView):
 
 class LoginAPIView(APIView):
     def post(self, request):
+        print(request.data['email'])
         user = User.objects.filter(email=request.data['email']).first()
         if not user:
             raise APIException('Invalid credentials!')

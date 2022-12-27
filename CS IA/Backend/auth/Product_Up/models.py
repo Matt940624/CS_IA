@@ -1,17 +1,20 @@
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, User
 from django.db import models
 
 # Create your models here
 
 
-class User(AbstractUser):
-    name = models.CharField(max_length=255)
-    email = models.CharField(max_length=255, unique=True)
-    password = models.CharField(max_length=255)
+# class User(AbstractUser):
+#     # name = models.CharField(max_length=255)
+#     # email = models.CharField(max_length=255, unique=True)
+#     password = models.CharField(max_length=255)
 
-    first_name = None
-    last_name = None
-    username = None
+#     # first_name = None
+#     # last_name = None
+#     # username = None
 
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
+#     # USERNAME_FIELD = 'email'
+#     # REQUIRED_FIELDS = []
+
+#     class Meta(AbstractUser.Meta):
+#         swappable = "AUTH_USER_MODEL"

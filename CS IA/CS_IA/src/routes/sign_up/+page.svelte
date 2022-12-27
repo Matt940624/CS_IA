@@ -43,25 +43,47 @@
 			alert('password created successfully');
 		}
 	}
-	let name = '',
+	let username = '',
 		email = '',
 		password = '';
 
-	$: submit = async () => {
-		await axios
-			.post('http://localhost:8000/api/register', {
-				name,
-				email,
-				password,
+	async function submit(e: Event) {
+		e.preventDefault();
+		// if(!username) {
+		//     usernameInput.focus();
+		//     return;
+		// }
+
+		// if(!email) {
+		//     emailInput.focus();
+		//     return;
+		// }
+
+		// if(!password) {
+		//     passwordInput.focus();
+		//     return;
+		// }
+
+		// if(!passwordConfirm) {
+		//     passwordConfirmInput.focus();
+		//     return;
+		// }
+
+		// if(password !== passwordConfirm) {
+		//     passwordInput.focus();
+		//     return;
+		// }
+
+		axios
+			.post('http://localhost:8000/api/register', { username, email, password })
+			.then((response) => {
+				console.log('received response', response);
+				if (response.status === 200) goto('/sign_in');
 			})
-			.then(function (response) {
-				console.log(response);
-			})
-			.catch(function (error) {
+			.catch((error) => {
 				console.log(error);
 			});
-		await goto('/sign_in');
-	};
+	}
 </script>
 
 <div class="grid grid-cols-5 gap-2">
@@ -77,7 +99,7 @@
 					>Your Username</label
 				>
 				<input
-					bind:value={name}
+					bind:value={username}
 					id="username"
 					class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
 					placeholder="Username"

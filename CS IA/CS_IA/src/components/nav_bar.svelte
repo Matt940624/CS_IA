@@ -47,7 +47,7 @@
 		<NavHamburger on:click={toggle} />
 	</div>
 	<NavUl {hidden} class="order-1">
-		<NavLi href="/sign_in" active={true}>Home</NavLi>
+		<NavLi href="/" active={true}>Home</NavLi>
 		<NavLi href="/tasklist">Tasklist</NavLi>
 		<NavLi href="/timer">Timer</NavLi>
 		<NavLi href="/flashcards">Flashcards</NavLi>
