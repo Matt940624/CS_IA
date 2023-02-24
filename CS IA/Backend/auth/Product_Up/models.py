@@ -1,20 +1,14 @@
-from django.contrib.auth.models import AbstractUser, User
-from django.db import models
-
-# Create your models here
+# from django.contrib.auth.models import AbstractUser, User
+# from django.db import models
 
 
-# class User(AbstractUser):
-#     # name = models.CharField(max_length=255)
-#     # email = models.CharField(max_length=255, unique=True)
-#     password = models.CharField(max_length=255)
+# class UsersTasks(models.Model):
+#     json = models.JSONField()
+#     created_at = models.DateTimeField(auto_now_add=True)
+#     updated_at = models.DateTimeField(auto_now=True)
 
-#     # first_name = None
-#     # last_name = None
-#     # username = None
 
-#     # USERNAME_FIELD = 'email'
-#     # REQUIRED_FIELDS = []
-
-#     class Meta(AbstractUser.Meta):
-#         swappable = "AUTH_USER_MODEL"
+# class UsersFlashCards(models.Model):
+#     json = models.JSONField()
+#     created_at = models.DateTimeField(auto_now_add=True)
+#     updated_at = models.DateTimeField(auto_now=True)

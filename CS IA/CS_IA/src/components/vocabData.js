@@ -15,3 +15,20 @@ export const vocab = [{
         definition: "extended essay"
     },
 ];
+export const initVocab = [{
+        word: "CS IA",
+        definition: "A world of pain"
+    },
+    {
+        word: "college application",
+        definition: "money drain"
+    },
+    {
+        word: "IB",
+        definition: "suffering"
+    },
+    {
+        word: "EE",
+        definition: "extended essay"
+    },
+];

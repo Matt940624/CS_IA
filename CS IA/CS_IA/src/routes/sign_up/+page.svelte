@@ -2,27 +2,7 @@
 	import '../../app.css';
 	import axios from 'axios';
 	import { goto } from '$app/navigation';
-	import {
-		Navbar,
-		NavBrand,
-		NavLi,
-		NavUl,
-		NavHamburger,
-		Button,
-		Input,
-	} from 'flowbite-svelte';
-	import {
-		Drawer,
-		CloseButton,
-		Sidebar,
-		SidebarBrand,
-		SidebarCta,
-		SidebarDropdownItem,
-		SidebarDropdownWrapper,
-		SidebarGroup,
-		SidebarItem,
-		SidebarWrapper,
-	} from 'flowbite-svelte';
+
 	import { sineIn } from 'svelte/easing';
 	let hidden2 = true;
 	let spanClass = 'flex-1 ml-3 whitespace-nowrap';
@@ -49,30 +29,6 @@
 
 	async function submit(e: Event) {
 		e.preventDefault();
-		// if(!username) {
-		//     usernameInput.focus();
-		//     return;
-		// }
-
-		// if(!email) {
-		//     emailInput.focus();
-		//     return;
-		// }
-
-		// if(!password) {
-		//     passwordInput.focus();
-		//     return;
-		// }
-
-		// if(!passwordConfirm) {
-		//     passwordConfirmInput.focus();
-		//     return;
-		// }
-
-		// if(password !== passwordConfirm) {
-		//     passwordInput.focus();
-		//     return;
-		// }
 
 		axios
 			.post('http://localhost:8000/api/register', { username, email, password })

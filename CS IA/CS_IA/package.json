@@ -39,6 +39,7 @@
 	"dependencies": {
 		"axios": "^1.2.1",
 		"cors": "^2.8.5",
+		"svelte-simple-modal": "^1.5.2",
 		"svelte-spa-router": "^3.3.0"
 	}
 }

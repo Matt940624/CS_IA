@@ -1,30 +1,12 @@
 <script lang="ts">
 	import '../../app.css';
 	import axios from 'axios';
-
-	import {
-		Navbar,
-		NavBrand,
-		NavLi,
-		NavUl,
-		NavHamburger,
-		Button,
-		Input,
-	} from 'flowbite-svelte';
-	import {
-		Drawer,
-		CloseButton,
-		Sidebar,
-		SidebarBrand,
-		SidebarCta,
-		SidebarDropdownItem,
-		SidebarDropdownWrapper,
-		SidebarGroup,
-		SidebarItem,
-		SidebarWrapper,
-	} from 'flowbite-svelte';
+	import { onMount } from 'svelte';
+	import { writable } from 'svelte/store';
+	import { isAuthenticated, signIn } from '../../stores/auth';
 	import { sineIn } from 'svelte/easing';
 	import { goto } from '$app/navigation';
+
 	let hidden2 = true;
 	let spanClass = 'flex-1 ml-3 whitespace-nowrap';
 	let transitionParams = {
@@ -48,7 +30,8 @@
 					axios.defaults.headers.common[
 						'Authorization'
 					] = `Bearer ${response.data.token}`;
-					await goto('/timer');
+					await signIn();
+					await goto('/');
 				}
 			})
 			.catch((error) => {

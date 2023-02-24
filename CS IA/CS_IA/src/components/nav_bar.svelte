@@ -9,18 +9,7 @@
 		Button,
 		Input,
 	} from 'flowbite-svelte';
-	import {
-		Drawer,
-		CloseButton,
-		Sidebar,
-		SidebarBrand,
-		SidebarCta,
-		SidebarDropdownItem,
-		SidebarDropdownWrapper,
-		SidebarGroup,
-		SidebarItem,
-		SidebarWrapper,
-	} from 'flowbite-svelte';
+	import { signOut } from '../stores/auth';
 	import { sineIn } from 'svelte/easing';
 	let hidden2 = true;
 	let spanClass = 'flex-1 ml-3 whitespace-nowrap';
@@ -30,7 +19,12 @@
 		easing: sineIn,
 	};
 	import icon from '$lib/assets/icon.jpg';
+	import { goto } from '$app/navigation';
 	// import icon from 'static\\images\\icon.jpg';
+	const handleSignOut = () => {
+		signOut();
+		goto('/sign_in');
+	};
 </script>
 
 <Navbar let:hidden let:toggle>
@@ -43,7 +37,7 @@
 		</span>
 	</NavBrand>
 	<div class="flex md:order-2">
-		<Button size="sm">Get started</Button>
+		<Button size="sm" on:click={handleSignOut}>Logout</Button>
 		<NavHamburger on:click={toggle} />
 	</div>
 	<NavUl {hidden} class="order-1">
@@ -51,6 +45,6 @@
 		<NavLi href="/tasklist">Tasklist</NavLi>
 		<NavLi href="/timer">Timer</NavLi>
 		<NavLi href="/flashcards">Flashcards</NavLi>
-		<NavLi href="/edit_flashcards">Edit Flashcards</NavLi>
+		<NavLi href="/edit_flash">Edit Flashcards</NavLi>
 	</NavUl>
 </Navbar>
